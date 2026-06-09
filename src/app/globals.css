@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --teal-50: #E1F5EE;
+    --teal-600: #0F6E56;
+    --teal-800: #085041;
+  }
+
+  /* Prose / rich text styles for blog content */
+  .prose-qa h2 {
+    @apply font-serif text-2xl font-semibold mt-8 mb-4 text-gray-900;
+  }
+  .prose-qa h3 {
+    @apply font-serif text-xl font-semibold mt-6 mb-3 text-gray-900;
+  }
+  .prose-qa p {
+    @apply text-gray-700 leading-relaxed mb-4;
+  }
+  .prose-qa ul {
+    @apply list-disc pl-6 mb-4 space-y-1;
+  }
+  .prose-qa ol {
+    @apply list-decimal pl-6 mb-4 space-y-1;
+  }
+  .prose-qa li {
+    @apply text-gray-700;
+  }
+  .prose-qa code {
+    @apply bg-gray-100 text-gray-800 text-sm font-mono px-1.5 py-0.5 rounded;
+  }
+  .prose-qa pre {
+    @apply bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto mb-4;
+  }
+  .prose-qa pre code {
+    @apply bg-transparent text-gray-100 p-0;
+  }
+  .prose-qa blockquote {
+    @apply border-l-4 border-teal-600 pl-4 italic text-gray-600 my-4;
+  }
+  .prose-qa a {
+    @apply text-teal-600 underline underline-offset-2 hover:text-teal-800;
+  }
+  .prose-qa strong {
+    @apply font-semibold text-gray-900;
+  }
+  .prose-qa table {
+    @apply w-full border-collapse mb-4 text-sm;
+  }
+  .prose-qa th {
+    @apply bg-teal-50 text-teal-800 font-semibold px-3 py-2 text-left border border-gray-200;
+  }
+  .prose-qa td {
+    @apply px-3 py-2 border border-gray-200 text-gray-700;
+  }
+  .prose-qa tr:nth-child(even) td {
+    @apply bg-gray-50;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
