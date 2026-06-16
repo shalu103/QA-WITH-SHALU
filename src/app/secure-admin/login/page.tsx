@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 
@@ -94,6 +95,11 @@ export default function AdminLoginPage() {
         <p className="mt-4 text-center text-xs text-gray-400">
           Admin access only · Not a public registration page
         </p>
+        <div className="mt-3 text-center text-sm">
+          <Link href="/secure-admin/forgot-password" className="text-teal-600 hover:text-teal-800">
+            Forgot password?
+          </Link>
+        </div>
       </div>
     </div>
   );
