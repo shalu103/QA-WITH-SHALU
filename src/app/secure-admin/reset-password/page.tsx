@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 
@@ -16,16 +16,20 @@ export default function ResetPasswordPage() {
   const [isValidToken, setIsValidToken] = useState(false);
 
   useEffect(() => {
-    // Check if we have a valid reset token in the URL
-    const code = searchParams.get("code");
-    const type = searchParams.get("type");
+    // Check if we have a valid reset token in the URL without using
+    // Next's `useSearchParams` (causes SSR build errors). Use
+    // `window.location` in the client instead.
+    if (typeof window === "undefined") return;
+    const params = new URL(window.location.href).searchParams;
+    const code = params.get("code");
+    const type = params.get("type");
 
     if (code && type === "recovery") {
       setIsValidToken(true);
     } else if (!code) {
       setError("No reset token provided. Please use the link from your email.");
     }
-  }, [searchParams]);
+  }, []);
 
   async function handleResetPassword(event: React.FormEvent) {
     event.preventDefault();
