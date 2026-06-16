@@ -30,17 +30,22 @@ export async function middleware(request: NextRequest) {
   } = await supabase.auth.getUser();
 
   const isAdminRoute = request.nextUrl.pathname.startsWith("/secure-admin");
-  const isLoginPage = request.nextUrl.pathname === "/secure-admin/login";
+  const publicRoutes = [
+    "/secure-admin/login",
+    "/secure-admin/reset-password",
+    "/secure-admin/forgot-password",
+  ];
+  const isPublicRoute = publicRoutes.includes(request.nextUrl.pathname);
 
-  // Redirect unauthenticated users away from admin routes
-  if (isAdminRoute && !isLoginPage && !user) {
+  // Redirect unauthenticated users away from admin routes (except public ones)
+  if (isAdminRoute && !isPublicRoute && !user) {
     return NextResponse.redirect(
       new URL("/secure-admin/login", request.url)
     );
   }
 
   // Redirect logged-in users away from login page
-  if (isLoginPage && user) {
+  if (request.nextUrl.pathname === "/secure-admin/login" && user) {
     return NextResponse.redirect(
       new URL("/secure-admin/dashboard", request.url)
     );
