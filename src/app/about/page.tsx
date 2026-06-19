@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SiteNav } from "@/components/layout/SiteNav";
 import { SiteFooter } from "@/components/layout/SiteFooter";
+import { contactDetails } from "@/lib/contact";
 import { CheckCircle2, Award, BookOpen, Target } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -40,13 +41,15 @@ export default function AboutPage() {
               </p>
               <div className="mt-5 flex flex-wrap gap-3">
                 <a
-                  href="#"
+                  href={contactDetails.linkedinUrl}
+                  target="_blank"
+                  rel="noreferrer"
                   className="text-sm font-medium px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-800 transition-colors"
                 >
                   Connect on LinkedIn
                 </a>
                 <a
-                  href="mailto:hello@qawithshalu.com"
+                  href={`mailto:${contactDetails.email}`}
                   className="text-sm font-medium px-4 py-2 border border-gray-200 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
                 >
                   Send an Email

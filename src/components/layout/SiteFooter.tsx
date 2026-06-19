@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { contactDetails } from "@/lib/contact";
 
 export function SiteFooter() {
   return (
@@ -13,24 +14,26 @@ export function SiteFooter() {
             real bugs, and modern QA trends.
           </p>
           <div className="flex gap-4 mt-4">
-            {/* LinkedIn — placeholder */}
             <a
-              href="#"
+              href={contactDetails.linkedinUrl}
+              target="_blank"
+              rel="noreferrer"
               aria-label="LinkedIn"
               className="text-sm text-gray-400 hover:text-teal-600 transition-colors"
             >
               LinkedIn
             </a>
-            {/* GitHub — placeholder */}
             <a
-              href="#"
+              href={contactDetails.githubUrl}
+              target="_blank"
+              rel="noreferrer"
               aria-label="GitHub"
               className="text-sm text-gray-400 hover:text-teal-600 transition-colors"
             >
               GitHub
             </a>
             <a
-              href="mailto:hello@qawithshalu.com"
+              href={`mailto:${contactDetails.email}`}
               className="text-sm text-gray-400 hover:text-teal-600 transition-colors"
             >
               Email

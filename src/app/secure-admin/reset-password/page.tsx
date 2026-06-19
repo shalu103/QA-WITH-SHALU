@@ -1,12 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 
 export default function ResetPasswordPage() {
-  const router = useRouter();
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState<string | null>(null);
@@ -62,10 +60,7 @@ export default function ResetPasswordPage() {
     if (error) {
       setError(error.message || "Failed to reset password. Please try again.");
     } else {
-      setMessage("Password reset successfully! Redirecting to login...");
-      setTimeout(() => {
-        router.push("/secure-admin/login");
-      }, 2000);
+      setMessage("Password reset successfully! You can now return to login.");
     }
   }
 
