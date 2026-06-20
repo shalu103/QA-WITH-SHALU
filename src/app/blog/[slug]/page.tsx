@@ -129,8 +129,9 @@ export default async function BlogPostPage({
                 src={blog.featured_image}
                 alt={blog.title}
                 fill
-                className="object-cover"
+                // className="object-cover"
                 priority
+              
               />
             </div>
           </div>
